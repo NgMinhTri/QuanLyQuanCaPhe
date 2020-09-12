@@ -82,6 +82,7 @@
             this.txbPassWord.Size = new System.Drawing.Size(284, 34);
             this.txbPassWord.TabIndex = 3;
             this.txbPassWord.Text = "1712833";
+            this.txbPassWord.UseSystemPasswordChar = true;
             // 
             // labelMK
             // 

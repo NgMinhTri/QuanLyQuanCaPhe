@@ -22,6 +22,7 @@ namespace WindowsFormsApp1
             InitializeComponent();
             LoadTable();
             LoadCategory();
+            LoadComboboxtable(cbbSwitchTable);
             
         }
         #region Method
@@ -79,6 +80,11 @@ namespace WindowsFormsApp1
             CultureInfo culture = new CultureInfo("vi-VN");
             txbTotalPrice.Text = totalprice.ToString("c", culture);
             
+        }
+        void LoadComboboxtable(ComboBox cb)
+        {
+            cb.DataSource = TableDAO.Instance.LoadTableList();
+            cb.DisplayMember = "Name";
         }
         #endregion
 
@@ -153,11 +159,16 @@ namespace WindowsFormsApp1
                     LoadTable();
                 }    
             }
-
-
         }
+        private void btnSwitchTable_Click(object sender, EventArgs e)
+        {
+            int id1 = (listViewBill.Tag as Table).ID;
+            int id2 = (cbbSwitchTable.SelectedItem as Table).ID;
+            if(MessageBox.Show(string.Format("Bạn có thật sự muốn chuyển {0} sang {1}", (listViewBill.Tag as Table).Name, (cbbSwitchTable.SelectedItem as Table).Name), "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+            TableDAO.Instance.SwitchTable(id1, id2);
+            LoadTable();
+        }
+
         #endregion
-
-
     }
 }
