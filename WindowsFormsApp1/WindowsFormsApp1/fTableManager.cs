@@ -1,0 +1,163 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Drawing.Text;
+using System.Globalization;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using WindowsFormsApp1.DAO;
+using WindowsFormsApp1.DTO;
+using Menu = WindowsFormsApp1.DTO.Menu;
+
+namespace WindowsFormsApp1
+{
+    public partial class fTableManager : Form
+    {
+        public fTableManager()
+        {
+            InitializeComponent();
+            LoadTable();
+            LoadCategory();
+            
+        }
+        #region Method
+        void LoadCategory()
+        {
+            List<Category> listCategory = CategoryDAO.Instance.GetListCategory();
+            cbCategory.DataSource = listCategory;
+            cbCategory.DisplayMember = "name";
+        }
+        void LoadFoodListByCategoryID(int id)
+        {
+            List<Food> listFood = FoodDAO.Instance.GetFoodByIdCategory(id);
+            cbFood.DataSource = listFood;
+            cbFood.DisplayMember = "name";
+        }
+        void LoadTable()
+        {
+            flowLPanelTable.Controls.Clear();
+            List<Table> tableList = TableDAO.Instance.LoadTableList();
+            foreach(Table item in tableList)
+            {
+                Button btn = new Button()
+                {
+                    Width = TableDAO.TableWidth, Height =TableDAO.TableHeight                    
+                };
+                flowLPanelTable.Controls.Add(btn);
+                btn.Text = item.Name + Environment.NewLine + item.Status;
+                btn.Click += btn_Click;
+                btn.Tag = item;
+                switch (item.Status)
+                {
+                    case "trống":
+                        btn.BackColor = Color.Aqua;
+                     break;
+                    default:
+                        btn.BackColor = Color.White;
+                     break;
+                }                    
+            }    
+        }
+        void ShowBill(int id)
+        {
+            listViewBill.Items.Clear();
+            List<Menu> listMenu = MenuDAO.Instance.GetListMenuByTable(id);
+            float totalprice = 0;
+            foreach(Menu item in listMenu)
+            {
+                ListViewItem lsvItem = new ListViewItem(item.FoodName.ToString());
+                lsvItem.SubItems.Add(item.Count.ToString());
+                lsvItem.SubItems.Add(item.Price.ToString());
+                lsvItem.SubItems.Add(item.TotalPrice.ToString());
+                totalprice += item.TotalPrice;
+                listViewBill.Items.Add(lsvItem);
+            }
+            CultureInfo culture = new CultureInfo("vi-VN");
+            txbTotalPrice.Text = totalprice.ToString("c", culture);
+            
+        }
+        #endregion
+
+
+        #region Events
+        private void btn_Click(object sender, EventArgs e)
+        {
+            int tableID =((sender as Button).Tag as Table).ID;
+            listViewBill.Tag = (sender as Button).Tag;
+            ShowBill(tableID);
+        }
+        private void thốngTinCáNhânToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fAccountProfile f = new fAccountProfile();
+            f.ShowDialog();
+        }
+
+        private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void adminToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fAdmin f = new fAdmin();
+            f.ShowDialog();
+        }
+
+        private void cbCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int id = 0;
+            ComboBox cb = sender as ComboBox;
+            if (cb.SelectedItem == null)
+                return;
+            Category selected = cb.SelectedItem as Category;
+            id = selected.Id;
+            LoadFoodListByCategoryID(id);
+        }
+
+        //button theem mon
+        private void btnAddFood_Click(object sender, EventArgs e)
+        {
+            Table table = listViewBill.Tag as Table;
+            int idBill = BillDAO.Instance.GetUnCheckBillByTableID(table.ID);
+            int idFood = (cbFood.SelectedItem as Food).Id;
+            int count = (int)numericFoodCount.Value;
+            if (idBill == -1)
+            {
+                BillDAO.Instance.InsertBill(table.ID);
+                BillInfoDAO.Instance.InsertBillInfo(BillDAO.Instance.GetMaxBill(), idFood, count);
+            }
+            else
+            {
+                BillInfoDAO.Instance.InsertBillInfo(idBill, idFood, count);
+            }
+            ShowBill(table.ID);
+            LoadTable();
+        }
+        private void btCheck_Click(object sender, EventArgs e)
+        {
+            Table table = listViewBill.Tag as Table;
+            int idBill = BillDAO.Instance.GetUnCheckBillByTableID(table.ID);
+            int discount = (int)numericDiscount.Value;
+            double totalPrice = Convert.ToDouble(txbTotalPrice.Text.Split(',')[0]);
+            double finalPrice = totalPrice - (totalPrice / 100) * discount;
+            if(idBill != -1)
+            {
+                if(MessageBox.Show(string.Format("Bạn có chắc thanh toán hóa đơn cho bàn {0}\n Tổng tiền - (Tổng tiền/100)x Giảm giá = {1} -({1} / 100) x {2} = {3} ",table.Name, totalPrice, discount, finalPrice), "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+                {
+                    BillDAO.Instance.CheckOut(idBill, discount);
+                    ShowBill(table.ID);
+                    LoadTable();
+                }    
+            }
+
+
+        }
+        #endregion
+
+
+    }
+}
