@@ -59,6 +59,7 @@ go
 insert account(UserName,DisplayName,Password, type) values (N'K9',N'RongK9',N'1',1)
 insert account(UserName,DisplayName,Password, type) values (N'staff',N'staff',N'1',0)
 
+go
 create procedure FindAccount @username char(10)
 As
 select * from dbo.account where UserName = @username
@@ -80,12 +81,12 @@ insert TableFood(name, status) values(N'Bàn 7', N'trống')
 insert TableFood(name, status) values(N'Bàn 8', N'trống')
 insert TableFood(name, status) values(N'Bàn 9', N'trống')
 insert TableFood(name, status) values(N'Bàn 10', N'trống')
-
 update TableFood set status=N'Có người' where id=7
 
 
-select * from TableFood
 
+
+go
 create procedure USP_GetTableList
 as
 select * from TableFood
@@ -209,8 +210,14 @@ begin
 	select @idBill = idBill from inserted
 	declare @idTable int
 	select @idTable = idTable from Bill where id = @idBill and status = 0
+
+	declare @count int
+	select @count = count(*) from BillInfo where idBill = @idBill
 	
-	update TableFood set status = N'Có người' where id = @idTable		
+	if(@count > 0)	
+	update TableFood set status = N'Có người' where id = @idTable	
+	else
+	update TableFood set status = N'trống' where id = @idTable
 end
 go
 ---------------------------------------------------------------------
@@ -229,7 +236,7 @@ begin
 end
 go
 
-------------------------update bảng Bill
+------------------------update bảng Bill----------------------------
 alter table Bill
 add discount int
 select * from Bill
@@ -237,36 +244,75 @@ update Bill set discount = 0
 
 
 -----------------------------------------
-go
-create procedure USP_SwitchTable
-@idTable1 int, @idTable2 int
-as
-begin
-     declare  @idFirstBill int
-	 declare  @idSecondBill int
 
-	 select @idSecondBill = id from Bill where idTable = @idTable2 and status = 0
-	 select @idFirstBill = id from Bill where idTable = @idTable1 and status = 0
+alter PROC USP_SwitchTabel
+@idTable1 INT, @idTable2 int
+AS BEGIN
 
-	 if(@idFirstBill is NULL)
-	 begin
-		 insert into Bill(DateCheckIn, DateCheckOut, idTable, status)
-		 values (getdate(), null, @idTable1, 0) 
-		 select @idFirstBill = MAX(id) from Bill where idTable = @idTable1 and status = 0
-	 end
-
-	 if(@idSecondBill IS NULL)
-	 begin
-		 insert into Bill(DateCheckIn, DateCheckOut, idTable, status)
-		 values (getdate(), null, @idTable2, 0) 
-		 select @idSecondBill = MAX(id) from Bill where idTable = @idTable2 and status = 0
-	 end
-
-	 select id into IDBillInfoTable from BillInfo where idBill = @idSecondBill
-
-	 update BillInfo set idBill = @idSecondBill where idBill = @idFirstBill
-
-	 update BillInfo set idBill = @idFirstBill where id in	(select * from IDBillInfoTable)
-	 drop table IDBillInfoTable
-end
-
+	DECLARE @idFirstBill int
+	DECLARE @idSeconrdBill INT
+	
+	DECLARE @isFirstTablEmty INT = 1
+	DECLARE @isSecondTablEmty INT = 1
+	
+	
+	SELECT @idSeconrdBill = id FROM dbo.Bill WHERE idTable = @idTable2 AND status = 0
+	SELECT @idFirstBill = id FROM dbo.Bill WHERE idTable = @idTable1 AND status = 0
+	
+	IF (@idFirstBill IS NULL)
+	BEGIN
+		PRINT '0000001'
+		INSERT dbo.Bill
+		        ( DateCheckIn ,
+		          DateCheckOut ,
+		          idTable ,
+		          status
+		        )
+		VALUES  ( GETDATE() , -- DateCheckIn - date
+		          NULL , -- DateCheckOut - date
+		          @idTable1 , -- idTable - int
+		          0  -- status - int
+		        )
+		        
+		SELECT @idFirstBill = MAX(id) FROM dbo.Bill WHERE idTable = @idTable1 AND status = 0
+		
+	END
+	
+	SELECT @isFirstTablEmty = COUNT(*) FROM dbo.BillInfo WHERE idBill = @idFirstBill
+	
+	
+	IF (@idSeconrdBill IS NULL)
+	BEGIN
+		PRINT '0000002'
+		INSERT dbo.Bill
+		        ( DateCheckIn ,
+		          DateCheckOut ,
+		          idTable ,
+		          status
+		        )
+		VALUES  ( GETDATE() , -- DateCheckIn - date
+		          NULL , -- DateCheckOut - date
+		          @idTable2 , -- idTable - int
+		          0  -- status - int
+		        )
+		SELECT @idSeconrdBill = MAX(id) FROM dbo.Bill WHERE idTable = @idTable2 AND status = 0
+		
+	END
+	
+	SELECT @isSecondTablEmty = COUNT(*) FROM dbo.BillInfo WHERE idBill = @idSeconrdBill
+		
+	SELECT id INTO IDBillInfoTable FROM dbo.BillInfo WHERE idBill = @idSeconrdBill
+	
+	UPDATE dbo.BillInfo SET idBill = @idSeconrdBill WHERE idBill = @idFirstBill
+	
+	UPDATE dbo.BillInfo SET idBill = @idFirstBill WHERE id IN (SELECT * FROM IDBillInfoTable)
+	
+	DROP TABLE IDBillInfoTable
+	
+	IF (@isFirstTablEmty = 0)
+		UPDATE dbo.TableFood SET status = N'trống' WHERE id = @idTable2
+		
+	IF (@isSecondTablEmty= 0)
+		UPDATE dbo.TableFood SET status = N'trống' WHERE id = @idTable1
+END
+GO

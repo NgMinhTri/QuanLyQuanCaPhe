@@ -37,6 +37,7 @@ namespace WindowsFormsApp1.DTO
             if (dateCheckOutTemp.ToString() != "")
             this.DateCheckOut = (DateTime?)dateCheckOutTemp;
             this.Status = (int)row["status"];
+            if(row["discount"].ToString() != "")
             this.Discount = (int)row["discount"];
         }
     }
