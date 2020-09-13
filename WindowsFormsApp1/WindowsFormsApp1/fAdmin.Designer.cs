@@ -174,6 +174,7 @@
             this.btnViewbill.TabIndex = 2;
             this.btnViewbill.Text = "Thống kê";
             this.btnViewbill.UseVisualStyleBackColor = true;
+            this.btnViewbill.Click += new System.EventHandler(this.btnViewbill_Click);
             // 
             // dateTPKToDate
             // 
@@ -203,6 +204,7 @@
             // 
             // dtgvBill
             // 
+            this.dtgvBill.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgvBill.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvBill.Location = new System.Drawing.Point(10, 3);
             this.dtgvBill.Name = "dtgvBill";
@@ -217,14 +219,14 @@
             this.tpFood.Controls.Add(this.panel5);
             this.tpFood.Controls.Add(this.panel4);
             this.tpFood.Controls.Add(this.panel3);
-            this.tpFood.Location = new System.Drawing.Point(4, 25);
+            this.tpFood.Location = new System.Drawing.Point(4, 29);
             this.tpFood.Name = "tpFood";
             this.tpFood.Padding = new System.Windows.Forms.Padding(3);
-            this.tpFood.Size = new System.Drawing.Size(874, 569);
+            this.tpFood.Size = new System.Drawing.Size(874, 565);
             this.tpFood.TabIndex = 1;
             this.tpFood.Text = "Thức ăn";
             this.tpFood.UseVisualStyleBackColor = true;
-            this.tpFood.Click += new System.EventHandler(this.tabPage2_Click);
+            //this.tpFood.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // panel6
             // 
@@ -414,10 +416,10 @@
             this.tbFoodCategory.Controls.Add(this.panel9);
             this.tbFoodCategory.Controls.Add(this.dataGVDanhMuc);
             this.tbFoodCategory.Controls.Add(this.panel7);
-            this.tbFoodCategory.Location = new System.Drawing.Point(4, 25);
+            this.tbFoodCategory.Location = new System.Drawing.Point(4, 29);
             this.tbFoodCategory.Name = "tbFoodCategory";
             this.tbFoodCategory.Padding = new System.Windows.Forms.Padding(3);
-            this.tbFoodCategory.Size = new System.Drawing.Size(874, 569);
+            this.tbFoodCategory.Size = new System.Drawing.Size(874, 565);
             this.tbFoodCategory.TabIndex = 2;
             this.tbFoodCategory.Text = "Doanh mục";
             this.tbFoodCategory.UseVisualStyleBackColor = true;
@@ -532,10 +534,10 @@
             this.pTable.Controls.Add(this.panel10);
             this.pTable.Controls.Add(this.dataGVTable);
             this.pTable.Controls.Add(this.panel8);
-            this.pTable.Location = new System.Drawing.Point(4, 25);
+            this.pTable.Location = new System.Drawing.Point(4, 29);
             this.pTable.Name = "pTable";
             this.pTable.Padding = new System.Windows.Forms.Padding(3);
-            this.pTable.Size = new System.Drawing.Size(874, 569);
+            this.pTable.Size = new System.Drawing.Size(874, 565);
             this.pTable.TabIndex = 3;
             this.pTable.Text = "Bàn ăn";
             this.pTable.UseVisualStyleBackColor = true;
@@ -671,10 +673,10 @@
             this.tpAccount.Controls.Add(this.panel12);
             this.tpAccount.Controls.Add(this.panel13);
             this.tpAccount.Controls.Add(this.panel14);
-            this.tpAccount.Location = new System.Drawing.Point(4, 25);
+            this.tpAccount.Location = new System.Drawing.Point(4, 29);
             this.tpAccount.Name = "tpAccount";
             this.tpAccount.Padding = new System.Windows.Forms.Padding(3);
-            this.tpAccount.Size = new System.Drawing.Size(874, 569);
+            this.tpAccount.Size = new System.Drawing.Size(874, 565);
             this.tpAccount.TabIndex = 4;
             this.tpAccount.Text = "Tài khoản";
             this.tpAccount.UseVisualStyleBackColor = true;

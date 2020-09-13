@@ -53,10 +53,17 @@ namespace WindowsFormsApp1.DAO
                 return 1;
             }
         }
-        public void CheckOut(int id, int discount)
+        public void CheckOut(int id, int discount,float totalPrice)
         {
-            string query = "update Bill set status = 1, " + "discount =" + discount + " where id = " + id;
+            string query = "update Bill set DateCheckOut = GETDATE() , status = 1, " + "discount =" + discount + ", totalPrice = " + totalPrice +" where id = " + id;
             DataProvider.Instance.ExecuteNonQuery(query);
+        }
+
+        //Hàm lấy ds bill từ ngày này tới ngày kia
+        public DataTable GetListBillByDate(DateTime datecheckin, DateTime datecheckout)
+        {
+
+            return DataProvider.Instance.ExecuteQuery("USP_GetListBillByDate @DateCheckIn , @DateCheckOut ", new object[]{datecheckin, datecheckout});
         }
 
     }

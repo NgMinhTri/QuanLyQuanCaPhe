@@ -17,24 +17,18 @@ namespace WindowsFormsApp1
         public fAdmin()
         {
             InitializeComponent();
-            LoadAccountList();
-        }
-        void LoadAccountList()
+            LoadDataTimePickerDate();
+        }   
+        //Hàm set lại ngày từ đầu tháng tới cuối tháng
+        void LoadDataTimePickerDate()
         {
-
-            ////string query = "exec usp_GetAccountByUserName  @UserName";         
-            ////DataProvider provider = new DataProvider();
-            ////dataGVAccount.DataSource = provider.ExecuteQuery(query, new object[]{ "1712833"});
-
-            string query = "exec usp_GetAccountByUserName  @UserName";
-            dataGVAccount.DataSource = DataProvider.Instance.ExecuteQuery(query, new object[] { "1712833" });
-
-
+            DateTime today = DateTime.Now;
+            dateTimePKFormDate.Value = new DateTime(today.Year, today.Month, 1);
+            dateTPKToDate.Value = dateTimePKFormDate.Value.AddMonths(1).AddDays(-1);
         }
-
-        private void tabPage2_Click(object sender, EventArgs e)
+        private void btnViewbill_Click(object sender, EventArgs e)
         {
-
+            dtgvBill.DataSource = BillDAO.Instance.GetListBillByDate(dateTimePKFormDate.Value, dateTPKToDate.Value);
         }
     }
 }

@@ -66,6 +66,7 @@ select * from dbo.account where UserName = @username
 
 exec FindAccount N'K9'
 
+go
 create Procedure Login @username nvarchar(50), @password nvarchar(50)
 As
 select * from account where UserName = @username and Password = @password
@@ -170,11 +171,14 @@ Food as f where bi.idBill = b.id and bi.idFood = f.id and b.status = 0 and b.idT
 
 -----------------------------thêm bill
 go
-create procedure USP_InsertBill
+alter procedure USP_InsertBill
 @idTable int
 as
+begin
 insert into Bill(DateCheckIn, DateCheckOut, idTable, status, discount)
 values(GETDATE(), null, @idTable, 0, 0)
+end
+go
 
 
 --------------------------theem billInfo-----------------
@@ -316,3 +320,18 @@ AS BEGIN
 		UPDATE dbo.TableFood SET status = N'trống' WHERE id = @idTable1
 END
 GO
+
+--LẤY DANH SÁCH BILL TỪ NGÀY NÀY TỚI NGÀY KIA---------------------
+alter procedure USP_GetListBillByDate
+@DateCheckIn date,
+@DateCheckOut date
+as
+begin
+	select t.name as [Tên bàn], b.totalPrice as [Tổng tiền], DateCheckIn as [Ngày vào], DateCheckOut as [Ngày ra], discount as [Giảm giá]
+	from Bill b, TableFood t
+	where DateCheckIn >= @DateCheckIn and DateCheckOut <= @DateCheckOut and b.status = 1 and t.id = b.idTable
+end
+go
+
+select * from Bill
+select * from TableFood
