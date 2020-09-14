@@ -17,15 +17,32 @@ namespace WindowsFormsApp1
 {
     public partial class fTableManager : Form
     {
-        public fTableManager()
+        private Account loginAccount;
+        public Account LoginAccount 
+        {
+            get { return loginAccount; }
+            set { loginAccount = value; ChangeAccount(loginAccount.Type); }
+            
+        }
+         
+        //ham dung
+        public fTableManager(Account acc)
         {
             InitializeComponent();
+            this.LoginAccount = acc;
             LoadTable();
             LoadCategory();
             LoadComboboxtable(cbbSwitchTable);
             
         }
         #region Method
+
+        //baì 15: thay đổi tt cá nhân
+        void ChangeAccount(int type)
+        {
+            adminToolStripMenuItem.Enabled = type == 1;
+            thôngTinTàiKhoảnToolStripMenuItem.Text +="(" + LoginAccount.DisplayName +")";
+        }
         void LoadCategory()
         {
             List<Category> listCategory = CategoryDAO.Instance.GetListCategory();
@@ -98,8 +115,14 @@ namespace WindowsFormsApp1
         }
         private void thốngTinCáNhânToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            fAccountProfile f = new fAccountProfile();
+            fAccountProfile f = new fAccountProfile(loginAccount);
+            f.UpdateAccount1 += f_UpdateAccount;
             f.ShowDialog();
+        }
+
+        private void f_UpdateAccount(object sender, AccountEvent e)
+        {
+            thôngTinTàiKhoảnToolStripMenuItem.Text = "Thông tin tài khoản (" + e.Acc.DisplayName + ")";
         }
 
         private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)

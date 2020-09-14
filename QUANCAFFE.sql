@@ -206,7 +206,7 @@ end
 go
 -----------------------------------------
 
-alter trigger UTG_UpdateBillInfo
+create trigger UTG_UpdateBillInfo
 on BillInfo for update, insert
 as
 begin
@@ -225,7 +225,7 @@ begin
 end
 go
 ---------------------------------------------------------------------
-alter trigger UTG_UpdateBill
+create trigger UTG_UpdateBill
 on Bill for update
 as
 begin
@@ -333,5 +333,40 @@ begin
 end
 go
 
-select * from Bill
-select * from TableFood
+
+-------------Bài 15 tạo proc đổi thông tin cá nhân---------------
+create procedure  USP_UpdateAccount
+@UserName nvarchar(100), @DisplayName nvarchar(100), @PassWord nvarchar(100), @NewPassWord nvarchar(100)
+as
+begin
+	declare @isRightPass int = 0
+	select @isRightPass = count(*) from Account where UserName = @UserName and Password = @PassWord
+	if(@isRightPass = 1)
+		begin
+			if( @NewPassWord = null or @NewPassWord = '')
+			update Account set DisplayName= @DisplayName where UserName = @UserName
+			else
+			update Account set DisplayName= @DisplayName, Password = @NewPassWord where UserName = @UserName
+		end
+end
+go
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-------------Bài 16 lấy danh sách thức ăn---------------------
+create procedure USP_GetListFood
+as
+begin
+select * from Food
+end

@@ -18,6 +18,7 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             LoadDataTimePickerDate();
+            LoadListFood();
         }   
         //Hàm set lại ngày từ đầu tháng tới cuối tháng
         void LoadDataTimePickerDate()
@@ -25,6 +26,10 @@ namespace WindowsFormsApp1
             DateTime today = DateTime.Now;
             dateTimePKFormDate.Value = new DateTime(today.Year, today.Month, 1);
             dateTPKToDate.Value = dateTimePKFormDate.Value.AddMonths(1).AddDays(-1);
+        }
+        void LoadListFood()
+        {
+            dataGVFood.DataSource = FoodDAO.Instance.GetListFood();
         }
         private void btnViewbill_Click(object sender, EventArgs e)
         {

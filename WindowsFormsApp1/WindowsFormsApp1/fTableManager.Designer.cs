@@ -40,6 +40,7 @@
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel3 = new System.Windows.Forms.Panel();
+            this.cbbSwitchTable = new System.Windows.Forms.ComboBox();
             this.txbTotalPrice = new System.Windows.Forms.TextBox();
             this.numericDiscount = new System.Windows.Forms.NumericUpDown();
             this.btnSwitchTable = new System.Windows.Forms.Button();
@@ -51,7 +52,6 @@
             this.cbFood = new System.Windows.Forms.ComboBox();
             this.cbCategory = new System.Windows.Forms.ComboBox();
             this.flowLPanelTable = new System.Windows.Forms.FlowLayoutPanel();
-            this.cbbSwitchTable = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -68,14 +68,15 @@
             this.thôngTinTàiKhoảnToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1267, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1267, 33);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // adminToolStripMenuItem
             // 
+            this.adminToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.adminToolStripMenuItem.Name = "adminToolStripMenuItem";
-            this.adminToolStripMenuItem.Size = new System.Drawing.Size(67, 24);
+            this.adminToolStripMenuItem.Size = new System.Drawing.Size(81, 29);
             this.adminToolStripMenuItem.Text = "Admin";
             this.adminToolStripMenuItem.Click += new System.EventHandler(this.adminToolStripMenuItem_Click);
             // 
@@ -84,21 +85,22 @@
             this.thôngTinTàiKhoảnToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.thốngTinCáNhânToolStripMenuItem,
             this.đăngXuấtToolStripMenuItem});
+            this.thôngTinTàiKhoảnToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.thôngTinTàiKhoảnToolStripMenuItem.Name = "thôngTinTàiKhoảnToolStripMenuItem";
-            this.thôngTinTàiKhoảnToolStripMenuItem.Size = new System.Drawing.Size(151, 24);
+            this.thôngTinTàiKhoảnToolStripMenuItem.Size = new System.Drawing.Size(190, 29);
             this.thôngTinTàiKhoảnToolStripMenuItem.Text = "Thông tin tài khoản";
             // 
             // thốngTinCáNhânToolStripMenuItem
             // 
             this.thốngTinCáNhânToolStripMenuItem.Name = "thốngTinCáNhânToolStripMenuItem";
-            this.thốngTinCáNhânToolStripMenuItem.Size = new System.Drawing.Size(210, 26);
+            this.thốngTinCáNhânToolStripMenuItem.Size = new System.Drawing.Size(251, 30);
             this.thốngTinCáNhânToolStripMenuItem.Text = "Thống tin cá nhân";
             this.thốngTinCáNhânToolStripMenuItem.Click += new System.EventHandler(this.thốngTinCáNhânToolStripMenuItem_Click);
             // 
             // đăngXuấtToolStripMenuItem
             // 
             this.đăngXuấtToolStripMenuItem.Name = "đăngXuấtToolStripMenuItem";
-            this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(210, 26);
+            this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(251, 30);
             this.đăngXuấtToolStripMenuItem.Text = "Đăng xuất";
             this.đăngXuấtToolStripMenuItem.Click += new System.EventHandler(this.đăngXuấtToolStripMenuItem_Click);
             // 
@@ -159,6 +161,15 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(520, 65);
             this.panel3.TabIndex = 3;
+            // 
+            // cbbSwitchTable
+            // 
+            this.cbbSwitchTable.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbbSwitchTable.FormattingEnabled = true;
+            this.cbbSwitchTable.Location = new System.Drawing.Point(0, 34);
+            this.cbbSwitchTable.Name = "cbbSwitchTable";
+            this.cbbSwitchTable.Size = new System.Drawing.Size(121, 28);
+            this.cbbSwitchTable.TabIndex = 4;
             // 
             // txbTotalPrice
             // 
@@ -278,15 +289,6 @@
             this.flowLPanelTable.Name = "flowLPanelTable";
             this.flowLPanelTable.Size = new System.Drawing.Size(665, 620);
             this.flowLPanelTable.TabIndex = 5;
-            // 
-            // cbbSwitchTable
-            // 
-            this.cbbSwitchTable.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbbSwitchTable.FormattingEnabled = true;
-            this.cbbSwitchTable.Location = new System.Drawing.Point(0, 34);
-            this.cbbSwitchTable.Name = "cbbSwitchTable";
-            this.cbbSwitchTable.Size = new System.Drawing.Size(121, 28);
-            this.cbbSwitchTable.TabIndex = 4;
             // 
             // fTableManager
             // 

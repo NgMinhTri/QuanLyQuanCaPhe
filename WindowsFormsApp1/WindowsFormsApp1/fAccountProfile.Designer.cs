@@ -152,6 +152,7 @@
             this.btCapNhat.TabIndex = 6;
             this.btCapNhat.Text = "Cập nhật";
             this.btCapNhat.UseVisualStyleBackColor = true;
+            this.btCapNhat.Click += new System.EventHandler(this.btCapNhat_Click);
             // 
             // fAccountProfile
             // 

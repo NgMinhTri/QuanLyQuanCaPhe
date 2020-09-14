@@ -37,5 +37,9 @@ namespace WindowsFormsApp1.DAO
             }
             return list;
         }
+        public DataTable GetListFood()
+        {
+            return DataProvider.Instance.ExecuteQuery("USP_GetListFood");
+        }
     }
 }

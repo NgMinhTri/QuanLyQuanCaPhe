@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.DAO;
+using WindowsFormsApp1.DTO;
 
 namespace WindowsFormsApp1
 {
@@ -24,7 +25,8 @@ namespace WindowsFormsApp1
             string password = txbPassWord.Text;
             if(Login(username, password))
             {
-                fTableManager f = new fTableManager();
+                Account LoginAccount = AccountDAO.Instance.GetAccountByUserName(username);
+                fTableManager f = new fTableManager(LoginAccount);
                 this.Hide();
                 f.ShowDialog();
                 this.Show();
@@ -36,7 +38,6 @@ namespace WindowsFormsApp1
             }    
 
         }
-
 
         private void btThoat_Click(object sender, EventArgs e)
         {
