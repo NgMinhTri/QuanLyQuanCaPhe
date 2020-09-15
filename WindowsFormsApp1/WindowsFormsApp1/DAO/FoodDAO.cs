@@ -41,5 +41,24 @@ namespace WindowsFormsApp1.DAO
         {
             return DataProvider.Instance.ExecuteQuery("USP_GetListFood");
         }
+
+        public bool InsertFood( string name, int idCategory, float price)
+        {
+            string query = string.Format("insert into Food(name, idCategory, price) values( N'{0}', {1}, {2})",name, idCategory, price);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+            return result > 0;
+        }
+        public bool UpdateFood(int idfood, string name, int idCategory, float price)
+        {
+            string query = string.Format("update Food set name = N'{0}', idCategory = {1}, price = {2} where id ={3}", name, idCategory, price, idfood);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+            return result > 0;
+        }
+        public bool DeleteFood(int idfood)
+        {
+            string query = string.Format("delete Food where id = " + idfood);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+            return result > 0;
+        }
     }
 }

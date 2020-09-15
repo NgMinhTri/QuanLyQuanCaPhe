@@ -344,4 +344,25 @@ create procedure USP_GetListFood
 as
 begin
 select * from Food
+end 
+
+select * from BillInfo
+----------------------------------------
+go
+create trigger UTG_DeleteBillInfo
+On BillInfo for Delete
+as
+begin
+     declare @idBillInfo int
+	 declare @idBill int
+	 select @idBillInfo = id , @idBill =Deleted.idBill from Deleted
+
+	 declare @idTable  int
+	 select @idTable = idTable from Bill where id = @idBill
+
+	 declare @count int = 0
+	 select @count =count(*) from BillInfo as bi, Bill As b where b.id = bi.idBill and b.id = @idBill and b.status = 0
+	 if(@count = 0)
+	 update TableFood set status = N'trống' where id = @idTable
 end
+go

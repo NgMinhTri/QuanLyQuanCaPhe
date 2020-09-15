@@ -94,11 +94,52 @@ namespace WindowsFormsApp1
 
         private void btEditFood_Click(object sender, EventArgs e)
         {
-
+            int id = Convert.ToInt32(txbFoodID.Text);
+            string name = txbFoodName.Text;
+            int categoryId = (cbCategory.SelectedItem as Category).Id;
+            float price = (float)numericFoodPrice.Value;
+            
+            if(FoodDAO.Instance.UpdateFood(id, name, categoryId,price))
+            {
+                MessageBox.Show("Cập nhật thành công", "Thông báo");
+                LoadListFood();
+            }
+            else
+            {
+                MessageBox.Show("Lỗi cập nhật không thành công", "Thông báo");
+            }    
         }
 
         private void btAddFood_Click(object sender, EventArgs e)
         {
+            
+            string name = txbFoodName.Text;
+            int categoryId = (cbCategory.SelectedItem as Category).Id;
+            float price = (float)numericFoodPrice.Value;
+
+            if (FoodDAO.Instance.InsertFood(name, categoryId, price))
+            {
+                MessageBox.Show("Thêm thông tin thức ăn thành công", "Thông báo");
+                LoadListFood();
+            }
+            else
+            {
+                MessageBox.Show("Lỗi thêm thức ăn không thành công", "Thông báo");
+            }
+        }
+        private void btDeleteFood_Click(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(txbFoodID.Text);
+            BillInfoDAO.Instance.DeleteBillInfoByFoodID(id);
+            if (FoodDAO.Instance.DeleteFood(id))
+            {
+                MessageBox.Show("Xóa thông tin thức ăn thành công", "Thông báo");
+                LoadListFood();
+            }
+            else
+            {
+                MessageBox.Show("Lỗi xóa không thành công", "Thông báo");
+            }
 
         }
 
@@ -118,11 +159,12 @@ namespace WindowsFormsApp1
 
         }
 
+
+
+
+
         #endregion
 
-
-
-
-
+        
     }
 }

@@ -386,6 +386,7 @@
             this.btDeleteFood.TabIndex = 0;
             this.btDeleteFood.Text = "Xóa";
             this.btDeleteFood.UseVisualStyleBackColor = true;
+            this.btDeleteFood.Click += new System.EventHandler(this.btDeleteFood_Click);
             // 
             // btAddFood
             // 
