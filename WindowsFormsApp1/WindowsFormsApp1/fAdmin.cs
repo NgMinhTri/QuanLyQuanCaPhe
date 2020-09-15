@@ -35,5 +35,20 @@ namespace WindowsFormsApp1
         {
             dtgvBill.DataSource = BillDAO.Instance.GetListBillByDate(dateTimePKFormDate.Value, dateTPKToDate.Value);
         }
+
+        private void btEditFood_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btAddFood_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnShowDmuc_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

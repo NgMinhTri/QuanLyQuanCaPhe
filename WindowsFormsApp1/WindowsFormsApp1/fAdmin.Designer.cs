@@ -137,10 +137,10 @@
             this.tbFood.Controls.Add(this.pTable);
             this.tbFood.Controls.Add(this.tpAccount);
             this.tbFood.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbFood.Location = new System.Drawing.Point(31, 54);
+            this.tbFood.Location = new System.Drawing.Point(31, 45);
             this.tbFood.Name = "tbFood";
             this.tbFood.SelectedIndex = 0;
-            this.tbFood.Size = new System.Drawing.Size(882, 598);
+            this.tbFood.Size = new System.Drawing.Size(882, 607);
             this.tbFood.TabIndex = 0;
             // 
             // tbBill
@@ -150,7 +150,7 @@
             this.tbBill.Location = new System.Drawing.Point(4, 29);
             this.tbBill.Name = "tbBill";
             this.tbBill.Padding = new System.Windows.Forms.Padding(3);
-            this.tbBill.Size = new System.Drawing.Size(874, 565);
+            this.tbBill.Size = new System.Drawing.Size(874, 574);
             this.tbBill.TabIndex = 0;
             this.tbBill.Text = "Doanh thu";
             this.tbBill.UseVisualStyleBackColor = true;
@@ -162,15 +162,15 @@
             this.panel2.Controls.Add(this.dateTimePKFormDate);
             this.panel2.Location = new System.Drawing.Point(6, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(861, 35);
+            this.panel2.Size = new System.Drawing.Size(861, 49);
             this.panel2.TabIndex = 1;
             // 
             // btnViewbill
             // 
-            this.btnViewbill.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnViewbill.Location = new System.Drawing.Point(376, 1);
+            this.btnViewbill.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnViewbill.Location = new System.Drawing.Point(371, 7);
             this.btnViewbill.Name = "btnViewbill";
-            this.btnViewbill.Size = new System.Drawing.Size(107, 29);
+            this.btnViewbill.Size = new System.Drawing.Size(125, 42);
             this.btnViewbill.TabIndex = 2;
             this.btnViewbill.Text = "Thống kê";
             this.btnViewbill.UseVisualStyleBackColor = true;
@@ -178,20 +178,20 @@
             // 
             // dateTPKToDate
             // 
-            this.dateTPKToDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTPKToDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTPKToDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTPKToDate.Location = new System.Drawing.Point(584, 3);
+            this.dateTPKToDate.Location = new System.Drawing.Point(581, 13);
             this.dateTPKToDate.Name = "dateTPKToDate";
-            this.dateTPKToDate.Size = new System.Drawing.Size(277, 27);
+            this.dateTPKToDate.Size = new System.Drawing.Size(277, 30);
             this.dateTPKToDate.TabIndex = 1;
             // 
             // dateTimePKFormDate
             // 
-            this.dateTimePKFormDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePKFormDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePKFormDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePKFormDate.Location = new System.Drawing.Point(3, 3);
+            this.dateTimePKFormDate.Location = new System.Drawing.Point(0, 13);
             this.dateTimePKFormDate.Name = "dateTimePKFormDate";
-            this.dateTimePKFormDate.Size = new System.Drawing.Size(273, 27);
+            this.dateTimePKFormDate.Size = new System.Drawing.Size(273, 30);
             this.dateTimePKFormDate.TabIndex = 0;
             // 
             // panel1
@@ -205,6 +205,7 @@
             // dtgvBill
             // 
             this.dtgvBill.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtgvBill.BackgroundColor = System.Drawing.Color.Silver;
             this.dtgvBill.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvBill.Location = new System.Drawing.Point(10, 3);
             this.dtgvBill.Name = "dtgvBill";
@@ -222,11 +223,10 @@
             this.tpFood.Location = new System.Drawing.Point(4, 29);
             this.tpFood.Name = "tpFood";
             this.tpFood.Padding = new System.Windows.Forms.Padding(3);
-            this.tpFood.Size = new System.Drawing.Size(874, 565);
+            this.tpFood.Size = new System.Drawing.Size(874, 574);
             this.tpFood.TabIndex = 1;
             this.tpFood.Text = "Thức ăn";
             this.tpFood.UseVisualStyleBackColor = true;
-            //this.tpFood.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // panel6
             // 
@@ -359,27 +359,28 @@
             // 
             // btShowFood
             // 
-            this.btShowFood.Location = new System.Drawing.Point(325, 3);
+            this.btShowFood.Location = new System.Drawing.Point(346, 3);
             this.btShowFood.Name = "btShowFood";
-            this.btShowFood.Size = new System.Drawing.Size(105, 74);
+            this.btShowFood.Size = new System.Drawing.Size(114, 74);
             this.btShowFood.TabIndex = 0;
             this.btShowFood.Text = "Xem";
             this.btShowFood.UseVisualStyleBackColor = true;
             // 
             // btEditFood
             // 
-            this.btEditFood.Location = new System.Drawing.Point(214, 3);
+            this.btEditFood.Location = new System.Drawing.Point(228, 3);
             this.btEditFood.Name = "btEditFood";
-            this.btEditFood.Size = new System.Drawing.Size(105, 74);
+            this.btEditFood.Size = new System.Drawing.Size(112, 74);
             this.btEditFood.TabIndex = 0;
             this.btEditFood.Text = "Sửa";
             this.btEditFood.UseVisualStyleBackColor = true;
+            this.btEditFood.Click += new System.EventHandler(this.btEditFood_Click);
             // 
             // btDeleteFood
             // 
             this.btDeleteFood.Location = new System.Drawing.Point(108, 3);
             this.btDeleteFood.Name = "btDeleteFood";
-            this.btDeleteFood.Size = new System.Drawing.Size(100, 74);
+            this.btDeleteFood.Size = new System.Drawing.Size(114, 74);
             this.btDeleteFood.TabIndex = 0;
             this.btDeleteFood.Text = "Xóa";
             this.btDeleteFood.UseVisualStyleBackColor = true;
@@ -392,6 +393,7 @@
             this.btAddFood.TabIndex = 0;
             this.btAddFood.Text = "Thêm";
             this.btAddFood.UseVisualStyleBackColor = true;
+            this.btAddFood.Click += new System.EventHandler(this.btAddFood_Click);
             // 
             // panel3
             // 
@@ -403,6 +405,7 @@
             // 
             // dataGVFood
             // 
+            this.dataGVFood.BackgroundColor = System.Drawing.Color.Silver;
             this.dataGVFood.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGVFood.Location = new System.Drawing.Point(3, 3);
             this.dataGVFood.Name = "dataGVFood";
@@ -419,7 +422,7 @@
             this.tbFoodCategory.Location = new System.Drawing.Point(4, 29);
             this.tbFoodCategory.Name = "tbFoodCategory";
             this.tbFoodCategory.Padding = new System.Windows.Forms.Padding(3);
-            this.tbFoodCategory.Size = new System.Drawing.Size(874, 565);
+            this.tbFoodCategory.Size = new System.Drawing.Size(874, 574);
             this.tbFoodCategory.TabIndex = 2;
             this.tbFoodCategory.Text = "Doanh mục";
             this.tbFoodCategory.UseVisualStyleBackColor = true;
@@ -474,6 +477,7 @@
             // 
             // dataGVDanhMuc
             // 
+            this.dataGVDanhMuc.BackgroundColor = System.Drawing.Color.Silver;
             this.dataGVDanhMuc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGVDanhMuc.Location = new System.Drawing.Point(3, 89);
             this.dataGVDanhMuc.Name = "dataGVDanhMuc";
@@ -495,27 +499,28 @@
             // 
             // btnShowDmuc
             // 
-            this.btnShowDmuc.Location = new System.Drawing.Point(325, 3);
+            this.btnShowDmuc.Location = new System.Drawing.Point(365, 3);
             this.btnShowDmuc.Name = "btnShowDmuc";
-            this.btnShowDmuc.Size = new System.Drawing.Size(113, 74);
+            this.btnShowDmuc.Size = new System.Drawing.Size(107, 74);
             this.btnShowDmuc.TabIndex = 0;
             this.btnShowDmuc.Text = "Xem";
             this.btnShowDmuc.UseVisualStyleBackColor = true;
+            this.btnShowDmuc.Click += new System.EventHandler(this.btnShowDmuc_Click);
             // 
             // btnSuaDanhMuc
             // 
-            this.btnSuaDanhMuc.Location = new System.Drawing.Point(214, 3);
+            this.btnSuaDanhMuc.Location = new System.Drawing.Point(246, 3);
             this.btnSuaDanhMuc.Name = "btnSuaDanhMuc";
-            this.btnSuaDanhMuc.Size = new System.Drawing.Size(105, 74);
+            this.btnSuaDanhMuc.Size = new System.Drawing.Size(113, 74);
             this.btnSuaDanhMuc.TabIndex = 0;
             this.btnSuaDanhMuc.Text = "Sửa";
             this.btnSuaDanhMuc.UseVisualStyleBackColor = true;
             // 
             // btnXoaDanhMuc
             // 
-            this.btnXoaDanhMuc.Location = new System.Drawing.Point(108, 3);
+            this.btnXoaDanhMuc.Location = new System.Drawing.Point(118, 3);
             this.btnXoaDanhMuc.Name = "btnXoaDanhMuc";
-            this.btnXoaDanhMuc.Size = new System.Drawing.Size(100, 74);
+            this.btnXoaDanhMuc.Size = new System.Drawing.Size(122, 74);
             this.btnXoaDanhMuc.TabIndex = 0;
             this.btnXoaDanhMuc.Text = "Xóa";
             this.btnXoaDanhMuc.UseVisualStyleBackColor = true;
@@ -524,7 +529,7 @@
             // 
             this.btnThemDanhMuc.Location = new System.Drawing.Point(3, 3);
             this.btnThemDanhMuc.Name = "btnThemDanhMuc";
-            this.btnThemDanhMuc.Size = new System.Drawing.Size(99, 74);
+            this.btnThemDanhMuc.Size = new System.Drawing.Size(109, 74);
             this.btnThemDanhMuc.TabIndex = 0;
             this.btnThemDanhMuc.Text = "Thêm";
             this.btnThemDanhMuc.UseVisualStyleBackColor = true;
@@ -537,7 +542,7 @@
             this.pTable.Location = new System.Drawing.Point(4, 29);
             this.pTable.Name = "pTable";
             this.pTable.Padding = new System.Windows.Forms.Padding(3);
-            this.pTable.Size = new System.Drawing.Size(874, 565);
+            this.pTable.Size = new System.Drawing.Size(874, 574);
             this.pTable.TabIndex = 3;
             this.pTable.Text = "Bàn ăn";
             this.pTable.UseVisualStyleBackColor = true;
@@ -612,6 +617,7 @@
             // 
             // dataGVTable
             // 
+            this.dataGVTable.BackgroundColor = System.Drawing.Color.Silver;
             this.dataGVTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGVTable.Location = new System.Drawing.Point(6, 89);
             this.dataGVTable.Name = "dataGVTable";
@@ -626,14 +632,14 @@
             this.panel8.Controls.Add(this.btnSuaTable);
             this.panel8.Controls.Add(this.btnXoaTable);
             this.panel8.Controls.Add(this.btnThemTable);
-            this.panel8.Location = new System.Drawing.Point(0, 6);
+            this.panel8.Location = new System.Drawing.Point(3, 6);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(478, 77);
+            this.panel8.Size = new System.Drawing.Size(475, 77);
             this.panel8.TabIndex = 3;
             // 
             // btnShowTable
             // 
-            this.btnShowTable.Location = new System.Drawing.Point(334, 3);
+            this.btnShowTable.Location = new System.Drawing.Point(359, 3);
             this.btnShowTable.Name = "btnShowTable";
             this.btnShowTable.Size = new System.Drawing.Size(113, 74);
             this.btnShowTable.TabIndex = 0;
@@ -642,18 +648,18 @@
             // 
             // btnSuaTable
             // 
-            this.btnSuaTable.Location = new System.Drawing.Point(214, 3);
+            this.btnSuaTable.Location = new System.Drawing.Point(239, 3);
             this.btnSuaTable.Name = "btnSuaTable";
-            this.btnSuaTable.Size = new System.Drawing.Size(105, 74);
+            this.btnSuaTable.Size = new System.Drawing.Size(114, 74);
             this.btnSuaTable.TabIndex = 0;
             this.btnSuaTable.Text = "Sửa";
             this.btnSuaTable.UseVisualStyleBackColor = true;
             // 
             // btnXoaTable
             // 
-            this.btnXoaTable.Location = new System.Drawing.Point(108, 3);
+            this.btnXoaTable.Location = new System.Drawing.Point(118, 3);
             this.btnXoaTable.Name = "btnXoaTable";
-            this.btnXoaTable.Size = new System.Drawing.Size(100, 74);
+            this.btnXoaTable.Size = new System.Drawing.Size(115, 74);
             this.btnXoaTable.TabIndex = 0;
             this.btnXoaTable.Text = "Xóa";
             this.btnXoaTable.UseVisualStyleBackColor = true;
@@ -662,7 +668,7 @@
             // 
             this.btnThemTable.Location = new System.Drawing.Point(3, 3);
             this.btnThemTable.Name = "btnThemTable";
-            this.btnThemTable.Size = new System.Drawing.Size(99, 74);
+            this.btnThemTable.Size = new System.Drawing.Size(109, 74);
             this.btnThemTable.TabIndex = 0;
             this.btnThemTable.Text = "Thêm";
             this.btnThemTable.UseVisualStyleBackColor = true;
@@ -676,7 +682,7 @@
             this.tpAccount.Location = new System.Drawing.Point(4, 29);
             this.tpAccount.Name = "tpAccount";
             this.tpAccount.Padding = new System.Windows.Forms.Padding(3);
-            this.tpAccount.Size = new System.Drawing.Size(874, 565);
+            this.tpAccount.Size = new System.Drawing.Size(874, 574);
             this.tpAccount.TabIndex = 4;
             this.tpAccount.Text = "Tài khoản";
             this.tpAccount.UseVisualStyleBackColor = true;
@@ -791,34 +797,34 @@
             this.panel13.Controls.Add(this.btnSuaAccount);
             this.panel13.Controls.Add(this.btnXoaAccount);
             this.panel13.Controls.Add(this.btnThemAccount);
-            this.panel13.Location = new System.Drawing.Point(10, 6);
+            this.panel13.Location = new System.Drawing.Point(3, 6);
             this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(463, 77);
+            this.panel13.Size = new System.Drawing.Size(470, 77);
             this.panel13.TabIndex = 5;
             // 
             // btnXemAccount
             // 
-            this.btnXemAccount.Location = new System.Drawing.Point(325, 3);
+            this.btnXemAccount.Location = new System.Drawing.Point(351, 3);
             this.btnXemAccount.Name = "btnXemAccount";
-            this.btnXemAccount.Size = new System.Drawing.Size(105, 74);
+            this.btnXemAccount.Size = new System.Drawing.Size(116, 74);
             this.btnXemAccount.TabIndex = 0;
             this.btnXemAccount.Text = "Xem";
             this.btnXemAccount.UseVisualStyleBackColor = true;
             // 
             // btnSuaAccount
             // 
-            this.btnSuaAccount.Location = new System.Drawing.Point(214, 3);
+            this.btnSuaAccount.Location = new System.Drawing.Point(232, 3);
             this.btnSuaAccount.Name = "btnSuaAccount";
-            this.btnSuaAccount.Size = new System.Drawing.Size(105, 74);
+            this.btnSuaAccount.Size = new System.Drawing.Size(113, 74);
             this.btnSuaAccount.TabIndex = 0;
             this.btnSuaAccount.Text = "Sửa";
             this.btnSuaAccount.UseVisualStyleBackColor = true;
             // 
             // btnXoaAccount
             // 
-            this.btnXoaAccount.Location = new System.Drawing.Point(108, 3);
+            this.btnXoaAccount.Location = new System.Drawing.Point(120, 3);
             this.btnXoaAccount.Name = "btnXoaAccount";
-            this.btnXoaAccount.Size = new System.Drawing.Size(100, 74);
+            this.btnXoaAccount.Size = new System.Drawing.Size(106, 74);
             this.btnXoaAccount.TabIndex = 0;
             this.btnXoaAccount.Text = "Xóa";
             this.btnXoaAccount.UseVisualStyleBackColor = true;
@@ -827,7 +833,7 @@
             // 
             this.btnThemAccount.Location = new System.Drawing.Point(3, 3);
             this.btnThemAccount.Name = "btnThemAccount";
-            this.btnThemAccount.Size = new System.Drawing.Size(99, 74);
+            this.btnThemAccount.Size = new System.Drawing.Size(111, 74);
             this.btnThemAccount.TabIndex = 0;
             this.btnThemAccount.Text = "Thêm";
             this.btnThemAccount.UseVisualStyleBackColor = true;
@@ -842,12 +848,13 @@
             // 
             // dataGVAccount
             // 
+            this.dataGVAccount.BackgroundColor = System.Drawing.Color.Silver;
             this.dataGVAccount.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGVAccount.Location = new System.Drawing.Point(7, 3);
+            this.dataGVAccount.Location = new System.Drawing.Point(0, 3);
             this.dataGVAccount.Name = "dataGVAccount";
             this.dataGVAccount.RowHeadersWidth = 51;
             this.dataGVAccount.RowTemplate.Height = 24;
-            this.dataGVAccount.Size = new System.Drawing.Size(453, 468);
+            this.dataGVAccount.Size = new System.Drawing.Size(460, 468);
             this.dataGVAccount.TabIndex = 0;
             // 
             // fAdmin
@@ -855,9 +862,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightBlue;
-            this.ClientSize = new System.Drawing.Size(934, 727);
+            this.ClientSize = new System.Drawing.Size(934, 671);
             this.Controls.Add(this.tbFood);
             this.Name = "fAdmin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Admin";
             this.tbFood.ResumeLayout(false);
             this.tbBill.ResumeLayout(false);
