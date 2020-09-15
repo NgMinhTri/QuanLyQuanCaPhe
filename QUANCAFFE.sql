@@ -10,8 +10,7 @@ create table TableFood
 )
 go
 create table account
-(
-    
+(    
 	 DisplayName nvarchar(100) not null,
 	 UserName nvarchar(100) primary key,
 	 Password nvarchar(100) not null default 0,
@@ -21,8 +20,7 @@ go
 create table FoodCategory
 (
 	id int identity primary key,
-	name nvarchar(100)not null,
-	
+	name nvarchar(100)not null,	
 )
 go
 create table Food
@@ -55,21 +53,9 @@ create table BillInfo
 )
 go
 
-
+--==================================== CHÈN DỮ LIỆU==================================--
 insert account(UserName,DisplayName,Password, type) values (N'K9',N'RongK9',N'1',1)
 insert account(UserName,DisplayName,Password, type) values (N'staff',N'staff',N'1',0)
-
-go
-create procedure FindAccount @username char(10)
-As
-select * from dbo.account where UserName = @username
-
-exec FindAccount N'K9'
-
-go
-create Procedure Login @username nvarchar(50), @password nvarchar(50)
-As
-select * from account where UserName = @username and Password = @password
 
 
 insert TableFood(name, status) values(N'Bàn 1', N'trống')
@@ -82,16 +68,6 @@ insert TableFood(name, status) values(N'Bàn 7', N'trống')
 insert TableFood(name, status) values(N'Bàn 8', N'trống')
 insert TableFood(name, status) values(N'Bàn 9', N'trống')
 insert TableFood(name, status) values(N'Bàn 10', N'trống')
-update TableFood set status=N'Có người' where id=7
-
-
-
-
-go
-create procedure USP_GetTableList
-as
-select * from TableFood
-go
 
 insert FoodCategory(name) values(N'Hải sản' )
 insert FoodCategory(name) values(N'Nông sản' )
@@ -108,7 +84,6 @@ insert Bill(DateCheckIn,DateCheckOut,idTable,status) values (GETDATE(),null,1,0)
 insert Bill(DateCheckIn,DateCheckOut,idTable,status) values (GETDATE(),null,2,0)
 insert Bill(DateCheckIn,DateCheckOut,idTable,status) values (GETDATE(),null,2,1)
 update Bill set DateCheckOut =Getdate() where status =1
-select * from Bill
 
 
 insert  BillInfo(idBill,idFood,count) values (1,1,2)
@@ -117,7 +92,22 @@ insert  BillInfo(idBill,idFood,count) values (1,3,4)
 insert  BillInfo(idBill,idFood,count) values (2,1,2)
 insert  BillInfo(idBill,idFood,count) values (2,2,2)
 
-----------------------------------------------------------------
+--========================================================================--
+---TẠO CÁC PROC
+
+go
+drop proc FindAccount
+create procedure FindAccount @username char(10)
+As
+select * from dbo.account where UserName = @username
+exec FindAccount N'K9'
+--------------------------------------
+
+GO
+create procedure USP_GetTableList
+as
+select * from TableFood
+------------------------
 go
 create procedure sp_InsertAccount
 @DisplayName nvarchar(20),
@@ -169,7 +159,7 @@ select f.name, bi.count, f.price,f.price*bi.count as totalPrice from BillInfo as
 Food as f where bi.idBill = b.id and bi.idFood = f.id and b.status = 0 and b.idTable =1;
 
 
------------------------------thêm bill
+-----------------------------thêm bill----------------
 go
 alter procedure USP_InsertBill
 @idTable int
@@ -179,7 +169,6 @@ insert into Bill(DateCheckIn, DateCheckOut, idTable, status, discount)
 values(GETDATE(), null, @idTable, 0, 0)
 end
 go
-
 
 --------------------------theem billInfo-----------------
 go
@@ -204,7 +193,7 @@ begin
 		insert into  BillInfo(idBill,idFood,count) values (@idBill, @idFood, @count)		
 end
 go
------------------------------------------
+-------------------------------------------------------------------
 
 create trigger UTG_UpdateBillInfo
 on BillInfo for update, insert
@@ -283,8 +272,7 @@ AS BEGIN
 	END
 	
 	SELECT @isFirstTablEmty = COUNT(*) FROM dbo.BillInfo WHERE idBill = @idFirstBill
-	
-	
+		
 	IF (@idSeconrdBill IS NULL)
 	BEGIN
 		PRINT '0000002'
@@ -350,19 +338,6 @@ begin
 		end
 end
 go
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 -------------Bài 16 lấy danh sách thức ăn---------------------
 create procedure USP_GetListFood

@@ -47,7 +47,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txbFoodName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txbFoodD = new System.Windows.Forms.TextBox();
+            this.txbFoodID = new System.Windows.Forms.TextBox();
             this.lableTenDN = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btShowFood = new System.Windows.Forms.Button();
@@ -60,7 +60,7 @@
             this.panel9 = new System.Windows.Forms.Panel();
             this.txbTenDM = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.txbIDDanhMuc = new System.Windows.Forms.TextBox();
+            this.txbCategoryID = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.dataGVDanhMuc = new System.Windows.Forms.DataGridView();
             this.panel7 = new System.Windows.Forms.Panel();
@@ -262,7 +262,7 @@
             this.panel5.Controls.Add(this.label2);
             this.panel5.Controls.Add(this.txbFoodName);
             this.panel5.Controls.Add(this.label1);
-            this.panel5.Controls.Add(this.txbFoodD);
+            this.panel5.Controls.Add(this.txbFoodID);
             this.panel5.Controls.Add(this.lableTenDN);
             this.panel5.Location = new System.Drawing.Point(484, 92);
             this.panel5.Name = "panel5";
@@ -273,7 +273,7 @@
             // 
             this.numericFoodPrice.Location = new System.Drawing.Point(221, 189);
             this.numericFoodPrice.Maximum = new decimal(new int[] {
-            10000,
+            1000000,
             0,
             0,
             0});
@@ -327,14 +327,15 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Tên món";
             // 
-            // txbFoodD
+            // txbFoodID
             // 
-            this.txbFoodD.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbFoodD.Location = new System.Drawing.Point(126, 30);
-            this.txbFoodD.Name = "txbFoodD";
-            this.txbFoodD.ReadOnly = true;
-            this.txbFoodD.Size = new System.Drawing.Size(248, 27);
-            this.txbFoodD.TabIndex = 3;
+            this.txbFoodID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbFoodID.Location = new System.Drawing.Point(126, 30);
+            this.txbFoodID.Name = "txbFoodID";
+            this.txbFoodID.ReadOnly = true;
+            this.txbFoodID.Size = new System.Drawing.Size(248, 27);
+            this.txbFoodID.TabIndex = 3;
+            this.txbFoodID.TextChanged += new System.EventHandler(this.txbFoodID_TextChanged);
             // 
             // lableTenDN
             // 
@@ -432,7 +433,7 @@
             // 
             this.panel9.Controls.Add(this.txbTenDM);
             this.panel9.Controls.Add(this.label6);
-            this.panel9.Controls.Add(this.txbIDDanhMuc);
+            this.panel9.Controls.Add(this.txbCategoryID);
             this.panel9.Controls.Add(this.label7);
             this.panel9.Location = new System.Drawing.Point(493, 89);
             this.panel9.Name = "panel9";
@@ -457,14 +458,14 @@
             this.label6.TabIndex = 4;
             this.label6.Text = "Tên danh mục";
             // 
-            // txbIDDanhMuc
+            // txbCategoryID
             // 
-            this.txbIDDanhMuc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbIDDanhMuc.Location = new System.Drawing.Point(166, 30);
-            this.txbIDDanhMuc.Name = "txbIDDanhMuc";
-            this.txbIDDanhMuc.ReadOnly = true;
-            this.txbIDDanhMuc.Size = new System.Drawing.Size(208, 27);
-            this.txbIDDanhMuc.TabIndex = 3;
+            this.txbCategoryID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbCategoryID.Location = new System.Drawing.Point(166, 30);
+            this.txbCategoryID.Name = "txbCategoryID";
+            this.txbCategoryID.ReadOnly = true;
+            this.txbCategoryID.Size = new System.Drawing.Size(208, 27);
+            this.txbCategoryID.TabIndex = 3;
             // 
             // label7
             // 
@@ -926,14 +927,14 @@
         private System.Windows.Forms.Button btAddFood;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.DataGridView dataGVFood;
-        private System.Windows.Forms.TextBox txbFoodD;
+        private System.Windows.Forms.TextBox txbFoodID;
         private System.Windows.Forms.Label lableTenDN;
         private System.Windows.Forms.TextBox txbFoodName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.TextBox txbTenDM;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txbIDDanhMuc;
+        private System.Windows.Forms.TextBox txbCategoryID;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridView dataGVDanhMuc;
         private System.Windows.Forms.Panel panel7;
