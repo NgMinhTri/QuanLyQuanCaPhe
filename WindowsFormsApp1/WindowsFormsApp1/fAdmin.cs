@@ -18,7 +18,7 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             LoadDataTimePickerDate();
-            LoadListFood();
+            //LoadListFood();
         }   
         //Hàm set lại ngày từ đầu tháng tới cuối tháng
         void LoadDataTimePickerDate()
@@ -49,6 +49,11 @@ namespace WindowsFormsApp1
         private void btnShowDmuc_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btShowFood_Click(object sender, EventArgs e)
+        {
+            LoadListFood();
         }
     }
 }

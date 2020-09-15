@@ -365,6 +365,7 @@
             this.btShowFood.TabIndex = 0;
             this.btShowFood.Text = "Xem";
             this.btShowFood.UseVisualStyleBackColor = true;
+            this.btShowFood.Click += new System.EventHandler(this.btShowFood_Click);
             // 
             // btEditFood
             // 

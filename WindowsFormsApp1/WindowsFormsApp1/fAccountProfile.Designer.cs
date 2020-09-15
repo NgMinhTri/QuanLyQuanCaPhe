@@ -96,6 +96,7 @@
             this.txbPassword.Name = "txbPassword";
             this.txbPassword.Size = new System.Drawing.Size(360, 30);
             this.txbPassword.TabIndex = 3;
+            this.txbPassword.UseSystemPasswordChar = true;
             // 
             // MKmoi
             // 
@@ -114,6 +115,7 @@
             this.txbNewPass.Name = "txbNewPass";
             this.txbNewPass.Size = new System.Drawing.Size(360, 30);
             this.txbNewPass.TabIndex = 3;
+            this.txbNewPass.UseSystemPasswordChar = true;
             // 
             // NhapLaiMK
             // 
@@ -132,6 +134,7 @@
             this.txbTypeAgain.Name = "txbTypeAgain";
             this.txbTypeAgain.Size = new System.Drawing.Size(360, 30);
             this.txbTypeAgain.TabIndex = 3;
+            this.txbTypeAgain.UseSystemPasswordChar = true;
             // 
             // btExit
             // 
