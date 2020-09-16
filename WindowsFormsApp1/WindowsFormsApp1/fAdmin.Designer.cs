@@ -253,6 +253,7 @@
             this.btFindFood.TabIndex = 0;
             this.btFindFood.Text = "Tìm kiếm";
             this.btFindFood.UseVisualStyleBackColor = true;
+            this.btFindFood.Click += new System.EventHandler(this.btFindFood_Click);
             // 
             // panel5
             // 
@@ -353,7 +354,7 @@
             this.panel4.Controls.Add(this.btEditFood);
             this.panel4.Controls.Add(this.btDeleteFood);
             this.panel4.Controls.Add(this.btAddFood);
-            this.panel4.Location = new System.Drawing.Point(6, 6);
+            this.panel4.Location = new System.Drawing.Point(6, 489);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(463, 77);
             this.panel4.TabIndex = 1;
@@ -362,7 +363,7 @@
             // 
             this.btShowFood.Location = new System.Drawing.Point(346, 3);
             this.btShowFood.Name = "btShowFood";
-            this.btShowFood.Size = new System.Drawing.Size(114, 74);
+            this.btShowFood.Size = new System.Drawing.Size(111, 74);
             this.btShowFood.TabIndex = 0;
             this.btShowFood.Text = "Xem";
             this.btShowFood.UseVisualStyleBackColor = true;
@@ -401,20 +402,20 @@
             // panel3
             // 
             this.panel3.Controls.Add(this.dataGVFood);
-            this.panel3.Location = new System.Drawing.Point(6, 89);
+            this.panel3.Location = new System.Drawing.Point(6, 6);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(463, 474);
+            this.panel3.Size = new System.Drawing.Size(463, 480);
             this.panel3.TabIndex = 0;
             // 
             // dataGVFood
             // 
             this.dataGVFood.BackgroundColor = System.Drawing.Color.Silver;
             this.dataGVFood.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGVFood.Location = new System.Drawing.Point(3, 3);
+            this.dataGVFood.Location = new System.Drawing.Point(0, 6);
             this.dataGVFood.Name = "dataGVFood";
             this.dataGVFood.RowHeadersWidth = 51;
             this.dataGVFood.RowTemplate.Height = 24;
-            this.dataGVFood.Size = new System.Drawing.Size(457, 468);
+            this.dataGVFood.Size = new System.Drawing.Size(457, 471);
             this.dataGVFood.TabIndex = 0;
             // 
             // tbFoodCategory
@@ -436,9 +437,9 @@
             this.panel9.Controls.Add(this.label6);
             this.panel9.Controls.Add(this.txbCategoryID);
             this.panel9.Controls.Add(this.label7);
-            this.panel9.Location = new System.Drawing.Point(493, 89);
+            this.panel9.Location = new System.Drawing.Point(484, 6);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(377, 474);
+            this.panel9.Size = new System.Drawing.Size(386, 557);
             this.panel9.TabIndex = 5;
             // 
             // txbTenDM
@@ -482,11 +483,11 @@
             // 
             this.dataGVDanhMuc.BackgroundColor = System.Drawing.Color.Silver;
             this.dataGVDanhMuc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGVDanhMuc.Location = new System.Drawing.Point(3, 89);
+            this.dataGVDanhMuc.Location = new System.Drawing.Point(3, 6);
             this.dataGVDanhMuc.Name = "dataGVDanhMuc";
             this.dataGVDanhMuc.RowHeadersWidth = 51;
             this.dataGVDanhMuc.RowTemplate.Height = 24;
-            this.dataGVDanhMuc.Size = new System.Drawing.Size(475, 468);
+            this.dataGVDanhMuc.Size = new System.Drawing.Size(475, 479);
             this.dataGVDanhMuc.TabIndex = 3;
             // 
             // panel7
@@ -495,7 +496,7 @@
             this.panel7.Controls.Add(this.btnSuaDanhMuc);
             this.panel7.Controls.Add(this.btnXoaDanhMuc);
             this.panel7.Controls.Add(this.btnThemDanhMuc);
-            this.panel7.Location = new System.Drawing.Point(3, 6);
+            this.panel7.Location = new System.Drawing.Point(6, 491);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(475, 77);
             this.panel7.TabIndex = 2;
@@ -558,9 +559,9 @@
             this.panel10.Controls.Add(this.label4);
             this.panel10.Controls.Add(this.txbIDTable);
             this.panel10.Controls.Add(this.label5);
-            this.panel10.Location = new System.Drawing.Point(484, 89);
+            this.panel10.Location = new System.Drawing.Point(484, 6);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(377, 474);
+            this.panel10.Size = new System.Drawing.Size(377, 557);
             this.panel10.TabIndex = 6;
             // 
             // cbStatusTable
@@ -622,11 +623,11 @@
             // 
             this.dataGVTable.BackgroundColor = System.Drawing.Color.Silver;
             this.dataGVTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGVTable.Location = new System.Drawing.Point(6, 89);
+            this.dataGVTable.Location = new System.Drawing.Point(6, 6);
             this.dataGVTable.Name = "dataGVTable";
             this.dataGVTable.RowHeadersWidth = 51;
             this.dataGVTable.RowTemplate.Height = 24;
-            this.dataGVTable.Size = new System.Drawing.Size(472, 468);
+            this.dataGVTable.Size = new System.Drawing.Size(472, 479);
             this.dataGVTable.TabIndex = 4;
             // 
             // panel8
@@ -635,7 +636,7 @@
             this.panel8.Controls.Add(this.btnSuaTable);
             this.panel8.Controls.Add(this.btnXoaTable);
             this.panel8.Controls.Add(this.btnThemTable);
-            this.panel8.Location = new System.Drawing.Point(3, 6);
+            this.panel8.Location = new System.Drawing.Point(3, 491);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(475, 77);
             this.panel8.TabIndex = 3;
@@ -800,7 +801,7 @@
             this.panel13.Controls.Add(this.btnSuaAccount);
             this.panel13.Controls.Add(this.btnXoaAccount);
             this.panel13.Controls.Add(this.btnThemAccount);
-            this.panel13.Location = new System.Drawing.Point(3, 6);
+            this.panel13.Location = new System.Drawing.Point(6, 491);
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(470, 77);
             this.panel13.TabIndex = 5;
@@ -844,20 +845,20 @@
             // panel14
             // 
             this.panel14.Controls.Add(this.dataGVAccount);
-            this.panel14.Location = new System.Drawing.Point(6, 89);
+            this.panel14.Location = new System.Drawing.Point(6, 6);
             this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(467, 474);
+            this.panel14.Size = new System.Drawing.Size(467, 480);
             this.panel14.TabIndex = 4;
             // 
             // dataGVAccount
             // 
             this.dataGVAccount.BackgroundColor = System.Drawing.Color.Silver;
             this.dataGVAccount.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGVAccount.Location = new System.Drawing.Point(0, 3);
+            this.dataGVAccount.Location = new System.Drawing.Point(3, 3);
             this.dataGVAccount.Name = "dataGVAccount";
             this.dataGVAccount.RowHeadersWidth = 51;
             this.dataGVAccount.RowTemplate.Height = 24;
-            this.dataGVAccount.Size = new System.Drawing.Size(460, 468);
+            this.dataGVAccount.Size = new System.Drawing.Size(460, 476);
             this.dataGVAccount.TabIndex = 0;
             // 
             // fAdmin

@@ -60,5 +60,18 @@ namespace WindowsFormsApp1.DAO
             int result = DataProvider.Instance.ExecuteNonQuery(query);
             return result > 0;
         }
+
+        public List<Food> GetListFoodByName(string name)
+        {
+            List<Food> list = new List<Food>();
+            string query = string.Format("select * from Food where dbo.fuChuyenCoDauThanhKhongDau(name) like N'%' +N'{0}' + '%'", name);
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+            foreach (DataRow item in data.Rows)
+            {
+                Food food = new Food(item);
+                list.Add(food);
+            }
+            return list;
+        }
     }
 }

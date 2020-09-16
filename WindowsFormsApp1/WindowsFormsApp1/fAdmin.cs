@@ -67,27 +67,43 @@ namespace WindowsFormsApp1
             cbCategory.DisplayMember = "Name";
         }
 
+        List<Food> SearchFoodByName(string name)
+        {
+            List<Food> listfood = new List<Food>();
+            listfood = FoodDAO.Instance.GetListFoodByName(name);
+            return listfood;
+        }
+
         private void txbFoodID_TextChanged(object sender, EventArgs e)
         {
-            if (dataGVFood.SelectedCells.Count > 0)
+            try
             {
-                int id = (int)dataGVFood.SelectedCells[0].OwningRow.Cells["idCategory"].Value;
-                Category category = CategoryDAO.Instance.GetCategoryByID(id);
-                cbCategory.SelectedItem = category;
-
-                int index = -1;
-                int i = 0;
-                foreach (Category item in cbCategory.Items)
+                if (dataGVFood.SelectedCells.Count > 0)
                 {
-                    if (item.Id == category.Id)
+                    int id = (int)dataGVFood.SelectedCells[0].OwningRow.Cells["idCategory"].Value;
+
+                    Category category = CategoryDAO.Instance.GetCategoryByID(id);
+                    cbCategory.SelectedItem = category;
+
+                    int index = -1;
+                    int i = 0;
+                    foreach (Category item in cbCategory.Items)
                     {
-                        index = i;
-                        break;
+                        if (item.Id == category.Id)
+                        {
+                            index = i;
+                            break;
+                        }
+                        i++;
                     }
-                    i++;
+                    cbCategory.SelectedIndex = index;
                 }
-                cbCategory.SelectedIndex = index;
             }
+            catch
+            {
+                
+            }
+             
         }
 
         private void btEditFood_Click(object sender, EventArgs e)
@@ -138,15 +154,12 @@ namespace WindowsFormsApp1
                 MessageBox.Show("Xóa thông tin thức ăn thành công", "Thông báo");
                 LoadListFood();
                 if (deleteFood != null)
-                    deleteFood(this, new EventArgs());
-
-                
+                    deleteFood(this, new EventArgs());               
             }
             else
             {
                 MessageBox.Show("Lỗi xóa không thành công", "Thông báo");
             }
-
         }
 
         private void btShowFood_Click(object sender, EventArgs e)
@@ -154,9 +167,12 @@ namespace WindowsFormsApp1
             LoadListFood();
         }
 
+        private void btFindFood_Click(object sender, EventArgs e)
+        {
+            foodList.DataSource =  SearchFoodByName(tbSearchFoodName.Text);
+        }
+
         #endregion
-
-
 
 
         #region DanhMuc
@@ -192,6 +208,9 @@ namespace WindowsFormsApp1
             add { updateFood += value; }
             remove { updateFood -= value; }
         }
+
         #endregion
+
+        
     }
 }
