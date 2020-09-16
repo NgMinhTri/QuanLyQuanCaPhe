@@ -133,7 +133,32 @@ namespace WindowsFormsApp1
         private void adminToolStripMenuItem_Click(object sender, EventArgs e)
         {
             fAdmin f = new fAdmin();
+            f.InsertFood += F_InsertFood;
+            f.DeleteFood += F_DeleteFood;
+            f.UpdateFood += F_UpdateFood;
             f.ShowDialog();
+        }
+
+        private void F_UpdateFood(object sender, EventArgs e)
+        {
+            LoadFoodListByCategoryID((cbCategory.SelectedItem as Category).Id);
+            if(listViewBill.Tag != null)
+            ShowBill((listViewBill.Tag as Table).ID);
+        }
+
+        private void F_DeleteFood(object sender, EventArgs e)
+        {
+            LoadFoodListByCategoryID((cbCategory.SelectedItem as Category).Id);
+            if (listViewBill.Tag != null)
+                ShowBill((listViewBill.Tag as Table).ID);
+            LoadTable();
+        }
+
+        private void F_InsertFood(object sender, EventArgs e)
+        {
+            LoadFoodListByCategoryID((cbCategory.SelectedItem as Category).Id);
+            if (listViewBill.Tag != null)
+                ShowBill((listViewBill.Tag as Table).ID);
         }
 
         private void cbCategory_SelectedIndexChanged(object sender, EventArgs e)
@@ -151,6 +176,11 @@ namespace WindowsFormsApp1
         private void btnAddFood_Click(object sender, EventArgs e)
         {
             Table table = listViewBill.Tag as Table;
+            if(table == null)
+            {
+                MessageBox.Show("Vui lòng chọn bàn", "Thông báo");
+                return;
+            }
             int idBill = BillDAO.Instance.GetUnCheckBillByTableID(table.ID);
             int idFood = (cbFood.SelectedItem as Food).Id;
             int count = (int)numericFoodCount.Value;

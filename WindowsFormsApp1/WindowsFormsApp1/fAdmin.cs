@@ -25,9 +25,7 @@ namespace WindowsFormsApp1
             LoadDataTimePickerDate();
             LoadListFood();
             LoadCategory();
-            AddFoodBinding();
-           
-            
+            AddFoodBinding();           
         }
         #region DoanhThu
 
@@ -103,6 +101,8 @@ namespace WindowsFormsApp1
             {
                 MessageBox.Show("Cập nhật thành công", "Thông báo");
                 LoadListFood();
+                if (updateFood != null)
+                    updateFood(this, new EventArgs());
             }
             else
             {
@@ -121,6 +121,8 @@ namespace WindowsFormsApp1
             {
                 MessageBox.Show("Thêm thông tin thức ăn thành công", "Thông báo");
                 LoadListFood();
+                if (insertFood != null)
+                    insertFood(this, new EventArgs());
             }
             else
             {
@@ -135,6 +137,10 @@ namespace WindowsFormsApp1
             {
                 MessageBox.Show("Xóa thông tin thức ăn thành công", "Thông báo");
                 LoadListFood();
+                if (deleteFood != null)
+                    deleteFood(this, new EventArgs());
+
+                
             }
             else
             {
@@ -165,6 +171,27 @@ namespace WindowsFormsApp1
 
         #endregion
 
-        
+        #region Events
+        private event EventHandler insertFood;
+        public  event EventHandler InsertFood
+        {
+            add { insertFood += value; }
+            remove { insertFood -= value; }
+        }
+
+        private event EventHandler deleteFood;
+        public event EventHandler DeleteFood
+        {
+            add { deleteFood += value; }
+            remove { deleteFood -= value; }
+        }
+
+        private event EventHandler updateFood;
+        public event EventHandler UpdateFood
+        {
+            add { updateFood += value; }
+            remove { updateFood -= value; }
+        }
+        #endregion
     }
 }
