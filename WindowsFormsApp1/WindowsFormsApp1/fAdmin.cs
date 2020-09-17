@@ -16,16 +16,21 @@ namespace WindowsFormsApp1
     public partial class fAdmin : Form
     {
         BindingSource foodList = new BindingSource();
+        BindingSource accountList = new BindingSource();
+        public Account loginAccount;// cho phép ko dc xóa tài khoản hiện đang login
 
         public fAdmin()
         {
             InitializeComponent();
             // Lưu ý để trên các hàm hiển thị
             dataGVFood.DataSource = foodList;
+            dataGVAccount.DataSource = accountList;
             LoadDataTimePickerDate();
             LoadListFood();
             LoadCategory();
-            AddFoodBinding();           
+            LoadAccount();
+            AddFoodBinding();
+            AddAccountBinding();
         }
         #region DoanhThu
 
@@ -187,6 +192,94 @@ namespace WindowsFormsApp1
 
         #endregion
 
+        #region Account
+        
+        void AddAccountBinding()
+        {
+            txbUserAccount.DataBindings.Add(new Binding("Text", dataGVAccount.DataSource, "UserName", true, DataSourceUpdateMode.Never));
+            txbDisAccount.DataBindings.Add(new Binding("Text", dataGVAccount.DataSource, "DisplayName", true, DataSourceUpdateMode.Never));
+            numericUpDownType.DataBindings.Add(new Binding("Value", dataGVAccount.DataSource, "type", true, DataSourceUpdateMode.Never));
+        }
+
+        void LoadAccount()
+        {
+            accountList.DataSource = AccountDAO.Instance.GetListAccount();
+        }
+
+        private void btnXemAccount_Click(object sender, EventArgs e)
+        {
+            LoadAccount();
+        }
+
+        private void btnSuaAccount_Click(object sender, EventArgs e)
+        {
+            string username = txbUserAccount.Text;
+            string displayname = txbDisAccount.Text;
+            int type = Convert.ToInt32(numericUpDownType.Text);
+            if (AccountDAO.Instance.UpdateAccount(username, displayname, type))
+            {
+                MessageBox.Show("Đã sửa tài khoản thành công", "Thông báo");
+                LoadAccount();
+            }
+            else
+            {
+                MessageBox.Show("Lỗi sửa tài khoản", "Thông báo");
+            }
+        }
+
+        private void btnXoaAccount_Click(object sender, EventArgs e)
+        {
+            string username = txbUserAccount.Text;
+            if(loginAccount.UserName.Equals(username))
+            {
+                MessageBox.Show("Không được xóa tài khoản hiện đang đăng nhập ", "Thông báo");
+            }    
+            
+            else if (AccountDAO.Instance.DeleteAccount(username))
+            {
+                MessageBox.Show("Đã xóa tài khoản thành công", "Thông báo");
+                LoadAccount();
+            }
+            else
+            {
+                MessageBox.Show("Lỗi xóa tài khoản", "Thông báo");
+            }
+        }
+
+        private void btnThemAccount_Click(object sender, EventArgs e)
+        {
+            string username = txbUserAccount.Text;
+            string displayname = txbDisAccount.Text;
+            int type =Convert.ToInt32(numericUpDownType.Text);
+            if(AccountDAO.Instance.InsertAccount(username, displayname, type))
+            {
+                MessageBox.Show("Đã thêm tài khoản thành công", "Thông báo");
+                LoadAccount();
+            }
+            else
+            {
+                MessageBox.Show("Lỗi thêm tài khoản", "Thông báo");
+            }    
+        }
+
+        private void btnSetPass_Click(object sender, EventArgs e)
+        {
+            string username = txbUserAccount.Text;
+            if (AccountDAO.Instance.ResetAccount(username))
+            {
+                MessageBox.Show("Đặt lại mật khẩu tài khoản thành công", "Thông báo");
+                LoadAccount();
+            }
+            else
+            {
+                MessageBox.Show("Lỗi đặt lại mật khẩu tài khoản", "Thông báo");
+            }
+        }
+
+        #endregion
+
+
+
         #region Events
         private event EventHandler insertFood;
         public  event EventHandler InsertFood
@@ -208,6 +301,8 @@ namespace WindowsFormsApp1
             add { updateFood += value; }
             remove { updateFood -= value; }
         }
+
+
 
         #endregion
 
