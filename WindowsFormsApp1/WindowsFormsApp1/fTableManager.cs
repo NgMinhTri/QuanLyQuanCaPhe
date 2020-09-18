@@ -223,8 +223,19 @@ namespace WindowsFormsApp1
             LoadTable();
         }
 
+
+        private void thanhToánToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btCheck_Click(this, new EventArgs());
+        }
+
+        private void thêmMónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnAddFood_Click(this, new EventArgs());
+        }
+
         #endregion
 
-        
+
     }
 }
