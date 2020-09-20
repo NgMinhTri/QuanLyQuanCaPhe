@@ -4,9 +4,10 @@ use QuanLyQuanCaFe
 go
 create table TableFood
 (
-	  id int identity primary key,
+	  id int identity, --identity, --primary key,
 	  name nvarchar(100) not null,
-	  status nvarchar(100)  not null  --trống || có người
+	  status nvarchar(100)  not null,  --trống || có người
+	  constraint PK_TABLE primary key(id)
 )
 go
 create table account
@@ -19,13 +20,13 @@ create table account
 go
 create table FoodCategory
 (
-	id int identity primary key,
+	id int  identity primary key,
 	name nvarchar(100)not null,	
 )
 go
 create table Food
 (
-  id int identity primary key,
+  id int  identity primary key,
   name nvarchar(100) not null default N' chưa đặt tên',
   idCategory int not null,
   price float not null
@@ -34,27 +35,33 @@ create table Food
 go
 create table Bill
 (
-	id int identity primary key,
+	id int identity,
 	DateCheckIn date not null default getdate(),
 	DateCheckOut date,
-	idTable int not null,
-	status int not null  --1: đã thanh toán, 0;chưa thanh toán
+	idTable int, --not null,
+	status int not null,  --1: đã thanh toán, 0;chưa thanh toán
+	discount int not null default 0,
+	totalPrice float not null default 0
+	constraint PK primary key(id)
 	foreign key(idTable)  references dbo.TableFood(id)
+	
 )
 go
 create table BillInfo
 (
-    id int identity primary key,
+    id int identity, --primary key,
 	idBill int not null,
 	idFood int not null,
 	count int not null 
+	constraint PK1 primary key(id)
 	foreign key(idBill) references dbo.Bill(id),
 	foreign key(idFood) references dbo.Food(id)
+
 )
 go
 
 --==================================== CHÈN DỮ LIỆU==================================--
-insert account(UserName,DisplayName,Password, type) values (N'K9',N'RongK9',N'1',1)
+insert account(UserName,DisplayName,Password, type) values (N'1712833',N'Nguyễn Minh Trí',N'1712833',1)
 insert account(UserName,DisplayName,Password, type) values (N'staff',N'staff',N'1',0)
 
 
@@ -95,13 +102,7 @@ insert  BillInfo(idBill,idFood,count) values (2,2,2)
 --========================================================================--
 ---TẠO CÁC PROC
 
-go
-drop proc FindAccount
-create procedure FindAccount @username char(10)
-As
-select * from dbo.account where UserName = @username
-exec FindAccount N'K9'
---------------------------------------
+
 
 GO
 create procedure USP_GetTableList
@@ -130,7 +131,7 @@ select * from account where  UserName =@UserName and Password=@Password
 
 ---------------------------------------------------------
 go
-alter procedure sp_Update @UserName nvarchar(20), 
+create procedure sp_Update @UserName nvarchar(20), 
 						   @Password nvarchar(20),
 						   @Displayname nvarchar(20), 
 						   @type int
@@ -161,7 +162,7 @@ Food as f where bi.idBill = b.id and bi.idFood = f.id and b.status = 0 and b.idT
 
 -----------------------------thêm bill----------------
 go
-alter procedure USP_InsertBill
+create procedure USP_InsertBill
 @idTable int
 as
 begin
@@ -172,7 +173,7 @@ go
 
 --------------------------theem billInfo-----------------
 go
-alter procedure USP_InsertBillInfo
+create procedure USP_InsertBillInfo
 @idBill int, @idFood int, @count int
 as
 begin
@@ -230,15 +231,14 @@ end
 go
 
 ------------------------update bảng Bill----------------------------
-alter table Bill
-add discount int
-select * from Bill
-update Bill set discount = 0
+--alter table Bill
+--add discount int
+--update Bill set discount = 0
 
 
 -----------------------------------------
 
-alter PROC USP_SwitchTabel
+create PROC USP_SwitchTabel
 @idTable1 INT, @idTable2 int
 AS BEGIN
 
@@ -310,7 +310,7 @@ END
 GO
 
 --LẤY DANH SÁCH BILL TỪ NGÀY NÀY TỚI NGÀY KIA---------------------
-alter procedure USP_GetListBillByDate
+create procedure USP_GetListBillByDate
 @DateCheckIn date,
 @DateCheckOut date
 as
@@ -420,6 +420,6 @@ BEGIN
     RETURN @strInput
 END
 
-
-select * from Food where dbo.fuChuyenCoDauThanhKhongDau(name) like N'%' +N'du' + '%'
-select * from Food where name like N'%{0}%'
+go
+--select * from Food where dbo.fuChuyenCoDauThanhKhongDau(name) like N'%' +N'du' + '%'
+--select * from Food where name like N'%{0}%'

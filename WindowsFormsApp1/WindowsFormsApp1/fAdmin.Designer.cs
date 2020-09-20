@@ -87,6 +87,7 @@
             this.txbSearchAccount = new System.Windows.Forms.TextBox();
             this.btnSearchAccount = new System.Windows.Forms.Button();
             this.panel12 = new System.Windows.Forms.Panel();
+            this.numericUpDownType = new System.Windows.Forms.NumericUpDown();
             this.btnSetPass = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.txbDisAccount = new System.Windows.Forms.TextBox();
@@ -100,7 +101,11 @@
             this.btnThemAccount = new System.Windows.Forms.Button();
             this.panel14 = new System.Windows.Forms.Panel();
             this.dataGVAccount = new System.Windows.Forms.DataGridView();
-            this.numericUpDownType = new System.Windows.Forms.NumericUpDown();
+            this.First = new System.Windows.Forms.Button();
+            this.Previous = new System.Windows.Forms.Button();
+            this.Last = new System.Windows.Forms.Button();
+            this.Next = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.tbFood.SuspendLayout();
             this.tbBill.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -124,10 +129,10 @@
             this.tpAccount.SuspendLayout();
             this.panel11.SuspendLayout();
             this.panel12.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownType)).BeginInit();
             this.panel13.SuspendLayout();
             this.panel14.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGVAccount)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownType)).BeginInit();
             this.SuspendLayout();
             // 
             // tbFood
@@ -141,17 +146,22 @@
             this.tbFood.Location = new System.Drawing.Point(31, 45);
             this.tbFood.Name = "tbFood";
             this.tbFood.SelectedIndex = 0;
-            this.tbFood.Size = new System.Drawing.Size(882, 607);
+            this.tbFood.Size = new System.Drawing.Size(882, 659);
             this.tbFood.TabIndex = 0;
             // 
             // tbBill
             // 
+            this.tbBill.Controls.Add(this.textBox1);
+            this.tbBill.Controls.Add(this.Next);
+            this.tbBill.Controls.Add(this.Last);
+            this.tbBill.Controls.Add(this.Previous);
+            this.tbBill.Controls.Add(this.First);
             this.tbBill.Controls.Add(this.panel2);
             this.tbBill.Controls.Add(this.panel1);
             this.tbBill.Location = new System.Drawing.Point(4, 29);
             this.tbBill.Name = "tbBill";
             this.tbBill.Padding = new System.Windows.Forms.Padding(3);
-            this.tbBill.Size = new System.Drawing.Size(874, 574);
+            this.tbBill.Size = new System.Drawing.Size(874, 626);
             this.tbBill.TabIndex = 0;
             this.tbBill.Text = "Doanh thu";
             this.tbBill.UseVisualStyleBackColor = true;
@@ -212,7 +222,7 @@
             this.dtgvBill.Name = "dtgvBill";
             this.dtgvBill.RowHeadersWidth = 51;
             this.dtgvBill.RowTemplate.Height = 24;
-            this.dtgvBill.Size = new System.Drawing.Size(852, 515);
+            this.dtgvBill.Size = new System.Drawing.Size(852, 504);
             this.dtgvBill.TabIndex = 0;
             // 
             // tpFood
@@ -687,7 +697,7 @@
             this.tpAccount.Location = new System.Drawing.Point(4, 29);
             this.tpAccount.Name = "tpAccount";
             this.tpAccount.Padding = new System.Windows.Forms.Padding(3);
-            this.tpAccount.Size = new System.Drawing.Size(874, 574);
+            this.tpAccount.Size = new System.Drawing.Size(874, 626);
             this.tpAccount.TabIndex = 4;
             this.tpAccount.Text = "Tài khoản";
             this.tpAccount.UseVisualStyleBackColor = true;
@@ -731,6 +741,29 @@
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(377, 474);
             this.panel12.TabIndex = 6;
+            // 
+            // numericUpDownType
+            // 
+            this.numericUpDownType.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericUpDownType.Location = new System.Drawing.Point(297, 136);
+            this.numericUpDownType.Maximum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.numericUpDownType.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownType.Name = "numericUpDownType";
+            this.numericUpDownType.Size = new System.Drawing.Size(77, 28);
+            this.numericUpDownType.TabIndex = 6;
+            this.numericUpDownType.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // btnSetPass
             // 
@@ -858,41 +891,62 @@
             this.dataGVAccount.Size = new System.Drawing.Size(460, 476);
             this.dataGVAccount.TabIndex = 0;
             // 
-            // numericUpDownType
+            // First
             // 
-            this.numericUpDownType.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDownType.Location = new System.Drawing.Point(297, 136);
-            this.numericUpDownType.Maximum = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
-            this.numericUpDownType.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDownType.Name = "numericUpDownType";
-            this.numericUpDownType.Size = new System.Drawing.Size(77, 28);
-            this.numericUpDownType.TabIndex = 6;
-            this.numericUpDownType.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.First.Location = new System.Drawing.Point(6, 576);
+            this.First.Name = "First";
+            this.First.Size = new System.Drawing.Size(121, 47);
+            this.First.TabIndex = 2;
+            this.First.Text = "First";
+            this.First.UseVisualStyleBackColor = true;
+            // 
+            // Previous
+            // 
+            this.Previous.Location = new System.Drawing.Point(133, 576);
+            this.Previous.Name = "Previous";
+            this.Previous.Size = new System.Drawing.Size(121, 47);
+            this.Previous.TabIndex = 3;
+            this.Previous.Text = "Previous";
+            this.Previous.UseVisualStyleBackColor = true;
+            // 
+            // Last
+            // 
+            this.Last.Location = new System.Drawing.Point(755, 579);
+            this.Last.Name = "Last";
+            this.Last.Size = new System.Drawing.Size(112, 47);
+            this.Last.TabIndex = 4;
+            this.Last.Text = "Last";
+            this.Last.UseVisualStyleBackColor = true;
+            // 
+            // Next
+            // 
+            this.Next.Location = new System.Drawing.Point(634, 579);
+            this.Next.Name = "Next";
+            this.Next.Size = new System.Drawing.Size(115, 47);
+            this.Next.TabIndex = 5;
+            this.Next.Text = "Next";
+            this.Next.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(376, 592);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(155, 27);
+            this.textBox1.TabIndex = 6;
             // 
             // fAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightBlue;
-            this.ClientSize = new System.Drawing.Size(934, 671);
+            this.ClientSize = new System.Drawing.Size(934, 716);
             this.Controls.Add(this.tbFood);
             this.Name = "fAdmin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Admin";
             this.tbFood.ResumeLayout(false);
             this.tbBill.ResumeLayout(false);
+            this.tbBill.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgvBill)).EndInit();
@@ -920,10 +974,10 @@
             this.panel11.PerformLayout();
             this.panel12.ResumeLayout(false);
             this.panel12.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownType)).EndInit();
             this.panel13.ResumeLayout(false);
             this.panel14.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGVAccount)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownType)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1003,5 +1057,10 @@
         private System.Windows.Forms.DataGridView dataGVAccount;
         private System.Windows.Forms.Button btnSetPass;
         private System.Windows.Forms.NumericUpDown numericUpDownType;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button Next;
+        private System.Windows.Forms.Button Last;
+        private System.Windows.Forms.Button Previous;
+        private System.Windows.Forms.Button First;
     }
 }
