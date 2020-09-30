@@ -27,7 +27,7 @@ namespace WindowsFormsApp1.DAO
 
         }
 
-        private string connectionSTR = "Data Source=DESKTOP-4KEFVA8\\SQLEXPRESS;Initial Catalog=QuanLyQuanCaFe;Integrated Security=True";
+        private string connectionSTR = "Data Source=DESKTOP-4KEFVA8;Initial Catalog=QuanLyQuanCaFe;Integrated Security=True";
 
        
 
